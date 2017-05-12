@@ -1,0 +1,8 @@
+<h1>Edit an Appearance</h1>
+<h2><%= @appearance.guest.name%></h2>
+
+<%= form_for(@appearance) do |f| %>
+<%= f.label :rating %>
+<%= f.number_field :rating  %>
+<%= f.submit %>
+<% end  %>

@@ -1,5 +1,10 @@
 class AppearancesController < ApplicationController
 
+  #validates :rating, inclusion: {in: [1..5]}
+
+
+
+
   def new
     @appearance = Appearance.new
   end
@@ -11,6 +16,24 @@ class AppearancesController < ApplicationController
     else
       redirect_to new_appearance_path
     end
+  end
+
+  def edit
+    @appearance = Appearance.find(params[:id])
+
+  end
+
+  def show
+    @appearance = Appearance.find(params[:id])
+  end
+
+  def update
+    @appearance = Appearance.find(params[:id])
+      if @appearance.update_attributes(appearance_params)
+        redirect_to root
+      else
+        render 'edit'
+      end
   end
 
   private
